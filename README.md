@@ -1,4 +1,4 @@
-Clear Images on FTP Server
+Clear Files on FTP Server
 ====================
 
 #### Overview
