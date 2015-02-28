@@ -80,7 +80,6 @@ def delete_files(ftp, files):
     """
 
     for file in files:
-        print('file ', file)
         ftp.delete(file)
 
 
