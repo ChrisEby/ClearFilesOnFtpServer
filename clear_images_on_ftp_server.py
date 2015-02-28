@@ -1,4 +1,4 @@
-__author__ = 'Chris Eby'
+# __author__ = 'Chris Eby'
 
 from ftplib import FTP, error_perm
 from datetime import datetime, timedelta
@@ -62,16 +62,14 @@ def filter_files(ftp, cutoff):
         else:
             raise
 
-    print('len(files) ', len(files))
-    print('files ', files)
+    print('Found ', len(files), ' files in the current directory.')
 
     for file in files:
         mod_time = get_modtime(ftp, file)
         if mod_time < cutoff:
             filtered_files.append(file)
 
-    print('len(filtered_files) ', len(filtered_files))
-    print('filtered_files ', filtered_files)
+    print(len(filtered_files), ' files met the date criteria to be deleted.')
 
     return filtered_files
 
