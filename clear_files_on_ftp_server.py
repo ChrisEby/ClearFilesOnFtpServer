@@ -55,19 +55,18 @@ def filter_files(ftp, cutoff):
     filtered_files = []
 
     try:
-        files = ftp.nlst()
+        files = ftp.mlsd(facts=['type'])
     except error_perm as resp:
         if str(resp) == "550 No files found":
             print('No files found in this directory')
         else:
             raise
 
-    print('Found ', len(files), ' files in the current directory.')
-
     for file in files:
-        mod_time = get_modtime(ftp, file)
-        if mod_time < cutoff:
-            filtered_files.append(file)
+        if file[1]['type'] == 'file':
+            mod_time = get_modtime(ftp, file[0])
+            if mod_time < cutoff:
+                filtered_files.append(file)
 
     print(len(filtered_files), ' files met the date criteria to be deleted.')
 
