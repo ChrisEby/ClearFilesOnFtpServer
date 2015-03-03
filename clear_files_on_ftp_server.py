@@ -66,7 +66,7 @@ def filter_files(ftp, cutoff):
         if file[1]['type'] == 'file':
             mod_time = get_modtime(ftp, file[0])
             if mod_time < cutoff:
-                filtered_files.append(file)
+                filtered_files.append(file[0])
 
     print(len(filtered_files), ' files met the date criteria to be deleted.')
 
